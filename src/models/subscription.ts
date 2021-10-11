@@ -17,7 +17,7 @@ export class SubManager {
   async addSub(msg) {
     const { channelId, content } = msg;
     console.log(`channelId: ${channelId} - content: ${content}`);
-    this.program.parse(parse(`node ${content}`));
+    this.program.parse(parse(`node ${content.toLowerCase()}`));
     const opts = this.program.opts();
     console.log(`opts: ${JSON.stringify(opts)}`);
     if (opts.list) {

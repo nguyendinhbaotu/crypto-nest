@@ -4,7 +4,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import { Client, Intents } from 'discord.js';
 
 import { SubManager } from 'src/models';
-import { COMMAND_HANDLER, handleCommand } from 'src/handlers';
+import { handleCommand } from 'src/handlers';
 
 @Injectable()
 export class TasksService {
@@ -27,7 +27,7 @@ export class TasksService {
     this.client.login(this.configService.get<string>('DISCORD_CLIENT_TOKEN'));
   }
 
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_10_MINUTES)
   async handleCron() {
     const subs = this.subManager.getSubs();
     subs.forEach(async (sub) => {

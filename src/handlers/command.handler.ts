@@ -7,37 +7,45 @@ export const COMMAND_HANDLER = {
 };
 
 export async function maticHandler(sub) {
-  const priceETH = await getPrice('ETH/USDT')();
-  const priceMATIC = await getPrice('MATIC/USDT')();
-  const {
-    data: {
-      currentStats: { difficulty },
-    },
-  } = await axios.get<any>('https://etherchain.org/api/basic_stats', {
-    responseType: 'json',
-  });
-  if (priceMATIC < +sub.price) return;
-  let msg = `ETH/MATIC: ${(priceETH / priceMATIC).toFixed(2)}`;
-  msg += ` (${priceETH}/${priceMATIC})`;
-  msg += ` - ETH DIFF ${(difficulty / Math.pow(10, 15)).toFixed(2)} P`;
-  return msg;
+  try {
+    const priceETH = await getPrice('ETH/USDT')();
+    const priceMATIC = await getPrice('MATIC/USDT')();
+    const {
+      data: {
+        currentStats: { difficulty },
+      },
+    } = await axios.get<any>('https://etherchain.org/api/basic_stats', {
+      responseType: 'json',
+    });
+    if (priceMATIC < +sub.price) return;
+    let msg = `ETH/MATIC: ${(priceETH / priceMATIC).toFixed(2)}`;
+    msg += ` (${priceETH}/${priceMATIC})`;
+    msg += ` - ETH DIFF ${(difficulty / Math.pow(10, 15)).toFixed(2)} P`;
+    return msg;
+  } catch (ex) {
+    return `${JSON.stringify(ex)}`;
+  }
 }
 
 export async function ethHandler(sub) {
-  const priceETH = await getPrice('ETH/USDT')();
-  const priceMATIC = await getPrice('MATIC/USDT')();
-  const {
-    data: {
-      currentStats: { difficulty },
-    },
-  } = await axios.get<any>('https://etherchain.org/api/basic_stats', {
-    responseType: 'json',
-  });
-  if (priceETH < +sub.price) return;
-  let msg = `ETH/MATIC: ${(priceETH / priceMATIC).toFixed(2)}`;
-  msg += ` (${priceETH}/${priceMATIC})`;
-  msg += ` - ETH DIFF ${(difficulty / Math.pow(10, 15)).toFixed(2)} P`;
-  return msg;
+  try {
+    const priceETH = await getPrice('ETH/USDT')();
+    const priceMATIC = await getPrice('MATIC/USDT')();
+    const {
+      data: {
+        currentStats: { difficulty },
+      },
+    } = await axios.get<any>('https://etherchain.org/api/basic_stats', {
+      responseType: 'json',
+    });
+    if (priceETH < +sub.price) return;
+    let msg = `ETH/MATIC: ${(priceETH / priceMATIC).toFixed(2)}`;
+    msg += ` (${priceETH}/${priceMATIC})`;
+    msg += ` - ETH DIFF ${(difficulty / Math.pow(10, 15)).toFixed(2)} P`;
+    return msg;
+  } catch (ex) {
+    return `${JSON.stringify(ex)}`;
+  }
 }
 
 export async function handleCommand(sub) {
