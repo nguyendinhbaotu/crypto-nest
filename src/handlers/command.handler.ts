@@ -10,6 +10,7 @@ export async function maticHandler(sub) {
   try {
     const priceETH = await getPrice('ETH/USDT')();
     const priceMATIC = await getPrice('MATIC/USDT')();
+    if (!priceETH || !priceMATIC) return;
     const {
       data: {
         currentStats: { difficulty },
@@ -31,6 +32,7 @@ export async function ethHandler(sub) {
   try {
     const priceETH = await getPrice('ETH/USDT')();
     const priceMATIC = await getPrice('MATIC/USDT')();
+    if (!priceETH || !priceMATIC) return;
     const {
       data: {
         currentStats: { difficulty },
