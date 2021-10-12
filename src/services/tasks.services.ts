@@ -15,7 +15,7 @@ export class TasksService {
   constructor(private configService: ConfigService) {
     try {
       this.client = new Client({
-        intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+        // intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
       });
       this.client.on('ready', () => {
         this.logger.debug(`Logged in as ${this.client.user.tag}!`);
