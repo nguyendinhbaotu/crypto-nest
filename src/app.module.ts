@@ -5,14 +5,14 @@ import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-// import { TasksService } from './services';
+import { TasksService } from './services';
 
 @Module({
   imports: [ConfigModule.forRoot(), HttpModule, ScheduleModule.forRoot()],
   controllers: [AppController],
   providers: [
     AppService, 
-    // TasksService
+    TasksService
   ],
 })
 export class AppModule {}
