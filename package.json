@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -33,7 +33,7 @@
     "axios": "^0.22.0",
     "ccxt": "^1.57.74",
     "commander": "^8.2.0",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.2.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "reflect-metadata": "^0.1.13",
